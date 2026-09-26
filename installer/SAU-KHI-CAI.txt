@@ -1,0 +1,28 @@
+HOVER TRANSLATE — SAU KHI CÀI ĐẶT
+==================================
+
+App đã cài xong. Trước khi dùng đầy đủ các tính năng, máy cần có sẵn PYTHON 3
+(bản cài đặt này KHÔNG kèm theo Python) — dùng cho dịch offline, OCR nâng cao,
+và Live Translate (nghe audio/mic dịch trực tiếp).
+
+BƯỚC 1 — Cài Python (nếu máy chưa có):
+  https://www.python.org/downloads/
+  (nhớ tick "Add python.exe to PATH" lúc cài)
+
+BƯỚC 2 — Cài các gói cần thiết (mở PowerShell, chạy):
+  cd "<thư mục cài Hover Translate>\scripts"
+  python install_packages.py
+
+BƯỚC 3 (tuỳ chọn) — Tải sẵn model Whisper cho Live Translate:
+  python install_whisper_model.py
+
+Không làm bước này, app vẫn mở và dùng được tính năng hover dịch cơ bản qua
+Windows OCR, nhưng dịch offline / Live Translate / OCR tiếng Việt (Tesseract)
+sẽ không hoạt động cho tới khi cài Python + các gói trên.
+
+PHÍM TẮT NHANH:
+  Giữ Alt + rê chuột vào chữ  -> dịch ngay
+  Alt+Q   -> chụp vùng màn hình để OCR + dịch
+  Alt+T   -> khung dịch nhanh (gõ/dán chữ)
+  Alt+L   -> Live Translate (nghe audio hệ thống hoặc mic, dịch gần realtime)
+  Alt+Shift+S -> mở Cài đặt

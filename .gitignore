@@ -1,0 +1,13 @@
+# Build artifacts - regenerate via dotnet build/publish, no need to track
+bin/
+obj/
+publish/
+installer-output/
+
+# IDE
+.vs/
+*.user
+
+# Python
+__pycache__/
+*.pyc
