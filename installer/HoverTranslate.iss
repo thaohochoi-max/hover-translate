@@ -3,7 +3,8 @@
 ; và gỡ cài đặt đàng hoàng qua Windows Settings/Control Panel.
 ;
 ; Build trước khi compile file này:
-;   dotnet publish ..\src\HoverTranslate.App\HoverTranslate.App.csproj -c Release -r win-x64 --self-contained true -o ..\publish
+;   1) dotnet publish ..\src\HoverTranslate.App\HoverTranslate.App.csproj -c Release -r win-x64 --self-contained true -o ..\publish
+;   2) powershell -File build-python-embed.ps1   (chỉ cần làm lại khi đổi dependency Python - kết quả ~1GB, không commit git)
 ;
 ; Compile: "C:\Users\thao\AppData\Local\Programs\Inno Setup 6\ISCC.exe" HoverTranslate.iss
 
@@ -38,6 +39,7 @@ Name: "startupicon"; Description: "Tự động chạy cùng Windows (chạy n�
 Source: "..\publish\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "..\scripts\*"; DestDir: "{app}\scripts"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "..\tessdata\*"; DestDir: "{app}\tessdata"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\python-embed\*"; DestDir: "{app}\python-embed"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "SAU-KHI-CAI.txt"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]

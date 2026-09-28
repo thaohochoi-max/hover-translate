@@ -333,7 +333,7 @@ internal static class Program
             string? scriptPath = FindTranslateServerScript();
             if (scriptPath is null) return;
 
-            var psi = new ProcessStartInfo("python", $"\"{scriptPath}\" 5055")
+            var psi = new ProcessStartInfo(PythonRuntime.Executable, $"\"{scriptPath}\" 5055")
             {
                 WorkingDirectory = Path.GetDirectoryName(scriptPath)!,
                 UseShellExecute = false,

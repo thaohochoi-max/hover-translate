@@ -93,7 +93,7 @@ internal static class ModelManager
             {
                 string? script = FindScript("install_whisper_model.py");
                 if (script is null) return;
-                var psi = new ProcessStartInfo("python", $"\"{script}\"")
+                var psi = new ProcessStartInfo(PythonRuntime.Executable, $"\"{script}\"")
                 {
                     WorkingDirectory = Path.GetDirectoryName(script)!,
                     UseShellExecute = false,
@@ -117,7 +117,7 @@ internal static class ModelManager
             {
                 string? script = FindScript("install_packages.py");
                 if (script is null) return;
-                var psi = new ProcessStartInfo("python", $"\"{script}\"")
+                var psi = new ProcessStartInfo(PythonRuntime.Executable, $"\"{script}\"")
                 {
                     WorkingDirectory = Path.GetDirectoryName(script)!,
                     UseShellExecute = false,

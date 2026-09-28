@@ -4,6 +4,10 @@ obj/
 publish/
 installer-output/
 
+# Python nhúng bundle cho installer (~1GB) - build lại theo hướng dẫn trong
+# installer/HoverTranslate.iss, không đẩy binary lớn lên git.
+python-embed/
+
 # IDE
 .vs/
 *.user

@@ -28,7 +28,7 @@ internal sealed class SpeechRecognitionService
         string? script = FindScript("stt_server.py");
         if (script is null) throw new FileNotFoundException("Không tìm thấy scripts/stt_server.py");
 
-        var psi = new ProcessStartInfo("python", $"\"{script}\" {Port} {modelSize}")
+        var psi = new ProcessStartInfo(PythonRuntime.Executable, $"\"{script}\" {Port} {modelSize}")
         {
             WorkingDirectory = Path.GetDirectoryName(script)!,
             UseShellExecute = false,

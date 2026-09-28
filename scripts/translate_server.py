@@ -26,6 +26,26 @@ def get_installed_languages():
 LANGUAGES = get_installed_languages()
 
 
+def warm_up():
+    # Lần translate() ĐẦU TIÊN trong 1 tiến trình chậm hơn hẳn các lần sau
+    # (~20-30s) vì argostranslate lười tải pipeline tách câu (stanza) - xác
+    # nhận thực tế lúc test bản đóng gói: gọi 1 câu ngắn ngay lúc khởi động,
+    # trước khi HTTP server mở cổng, để chi phí này rơi vào lúc server đang
+    # "startup" (nơi .NET vốn đã chờ được vài giây) thay vì vào request dịch
+    # ĐẦU TIÊN của người dùng thật (nơi .NET chỉ chờ 4s rồi bỏ cuộc, rớt về
+    # online oan uổng dù offline vẫn dùng được).
+    for from_code, to_code in [("en", "vi"), ("vi", "en")]:
+        from_lang, to_lang = LANGUAGES.get(from_code), LANGUAGES.get(to_code)
+        if from_lang is None or to_lang is None:
+            continue
+        translation = from_lang.get_translation(to_lang)
+        if translation is not None:
+            translation.translate("warm up")
+
+
+warm_up()
+
+
 class Handler(BaseHTTPRequestHandler):
     def log_message(self, format, *args):
         pass  # keep stdout clean; .NET side doesn't need per-request logs
